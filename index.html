@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Survie en Chaîne — Beat & Fever</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">SURVIE EN CHAÎNE <span class="badge">FEVER EDITION</span></div>
+    <div class="controls">
+      <div class="track-pill" id="activeTrackEl">🎵 Lagon Calme • 82 BPM</div>
+      <div class="mutator-pill" id="mutatorEl">Mode : Standard</div>
+      <button class="icon-btn" id="keysBtn" title="Configurer les touches clavier">⌨️ Touches</button>
+      <button class="icon-btn" id="soundBtn" title="Activer/Couper le son">🔊 Son : ON</button>
+    </div>
+  </header>
+
+  <section class="hud">
+    <div class="stat">
+      <div class="stat-label">Score</div>
+      <div class="stat-value" id="scoreEl">0</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Combo</div>
+      <div class="stat-value" id="comboEl">0 (x1)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Palier</div>
+      <div class="stat-value" id="tierEl">1</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Boucliers</div>
+      <div class="stat-value" id="shieldsEl">🛡️🛡️</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Record Piste</div>
+      <div class="stat-value" id="bestEl">0</div>
+    </div>
+  </section>
+
+  <section class="fever-bar-wrap" aria-label="Jauge Fever">
+    <div class="fever-header">
+      <span id="feverLabel">🔥 FEVER : 0%</span>
+      <span id="shrinkStatus"></span>
+    </div>
+    <div class="fever-track">
+      <div class="fever-fill" id="feverFill"></div>
+    </div>
+  </section>
+
+  <main class="arena" id="arena">
+    <div class="slowmo-banner" id="slowmoBanner">⚡ BULLET-TIME ⚡</div>
+
+    <div class="overlay" id="overlay">
+      <h1 id="overlayTitle">SURVIE EN CHAÎNE</h1>
+      <p id="overlayDesc">
+        Choisis une musique : le <strong>rythme</strong>, la <strong>vitesse</strong> et l'<strong>ambiance visuelle</strong> s'adaptent directement à son BPM ! Vise le <strong>PERFECT !</strong> et remplis la jauge <strong>FEVER</strong>.
+      </p>
+
+      <div class="music-selector">
+        <div class="diff-tabs" id="diffTabs">
+          <button class="diff-tab active" data-diff="facile">🟢 Facile (5)</button>
+          <button class="diff-tab" data-diff="moyen">🟡 Moyen (5)</button>
+          <button class="diff-tab" data-diff="difficile">🔴 Difficile (5)</button>
+          <button class="diff-tab" data-diff="extreme">⚫ Extrême (5)</button>
+        </div>
+        <div class="track-grid" id="trackGrid"></div>
+      </div>
+
+    <div class="keybind-panel hidden" id="keybindPanel">
+        <div class="keybind-header">
+          <span>⌨️ Personnalisation des touches (clique sur un bouton puis presse une touche)</span>
+          <button type="button" class="reset-keys-btn" id="resetKeysBtn">Réinitialiser</button>
+        </div>
+        <div class="keybind-group">
+          <div class="keybind-title">Chaînes aléatoires (3 touches) :</div>
+          <div class="keybind-slots" id="chainKeySlots"></div>
+        </div>
+        <div class="keybind-group">
+          <div class="keybind-title">Cibles &amp; accords clavier (3 touches) :</div>
+          <div class="keybind-slots" id="normalKeySlots"></div>
+        </div>
+        <div class="keybind-hint" id="keybindHint">Astuce : Échap annule la capture en cours • Aucun doublon autorisé.</div>
+      </div>
+
+      <button class="btn" id="startBtn">Lancer sur cette musique</button>
+      <div class="meta" id="metaEl">Parties jouées : 0 • Record global : 0</div>
+      <div class="achievements-box" id="achievementsEl"></div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
